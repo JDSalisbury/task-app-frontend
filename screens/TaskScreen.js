@@ -1,6 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
+import {styles} from './styles/layout'
 
 export default function TasksScreen() {
   return (
@@ -17,11 +18,3 @@ export default function TasksScreen() {
 TasksScreen.navigationOptions = {
   title: 'Tasks',
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
-  },
-});
