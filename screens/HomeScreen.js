@@ -12,7 +12,7 @@ import {styles} from './styles/layout'
 
 import { MonoText } from '../components/StyledText';
 
-export default function HomeScreen() {
+const  HomeScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView
@@ -111,4 +111,4 @@ function handleHelpPress() {
   );
 }
 
-
+export default HomeScreen;

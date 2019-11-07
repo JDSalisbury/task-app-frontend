@@ -4,12 +4,13 @@ import { ExpoLinksView} from '@expo/samples';
 import {styles} from './styles/layout'
 
 
-export default function StatsScreen() {
+const StatsScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <Text>Name:</Text>
       <Text>Point Total:</Text>
       <Text>Assigned Task:</Text>
+      <Text>Life Time Points:</Text>
       <ExpoLinksView />
     </ScrollView>
   );
@@ -20,3 +21,4 @@ StatsScreen.navigationOptions = {
 };
 
 
+export default StatsScreen;
