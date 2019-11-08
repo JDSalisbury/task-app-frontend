@@ -5,9 +5,9 @@ import {styles} from './styles/layout'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
-import {addToCounter, removeFromCounter, getAPokemon} from '../redux/actions/counter.actions'
+import {addToCounter, removeFromCounter} from '../redux/actions/counter.actions'
 
-const TasksScreen = ({counter, addToCounter, removeFromCounter, getAPokemon}) => { 
+const TasksScreen = ({counter, addToCounter, removeFromCounter, }) => { 
 
   return (
     <ScrollView style={styles.container}>
@@ -21,18 +21,8 @@ const TasksScreen = ({counter, addToCounter, removeFromCounter, getAPokemon}) =>
         </TouchableOpacity>
 
       </View>
-        <TouchableOpacity onPress={()=>{getAPokemon()}}>
-          <Text>Whos that Pokemon</Text>
-        </TouchableOpacity>
-        <Text>-</Text>
-        <Text>{counter.pokemon && counter.pokemon.name}</Text>
-        <Image
-            style={{width: 100, height: 100}}
-
-            source={
-              {uri: counter.pokemon && counter.pokemon.sprites.front_default
-            }}
-          />
+        
+       
           
     </ScrollView>
   );
@@ -44,5 +34,5 @@ TasksScreen.navigationOptions = {
 
 export default connect(
   ({counter})=>({counter}),
-  {addToCounter, removeFromCounter, getAPokemon}
+  {addToCounter, removeFromCounter}
 )(TasksScreen);
