@@ -1,5 +1,5 @@
 import React,  {useState} from 'react';
-import { ScrollView, View, Text } from 'react-native';
+import { ScrollView, View, Text, Image } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import {styles} from './styles/layout'
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -26,6 +26,14 @@ const TasksScreen = ({counter, addToCounter, removeFromCounter, getAPokemon}) =>
         </TouchableOpacity>
         <Text>-</Text>
         <Text>{counter.pokemon && counter.pokemon.name}</Text>
+        <Image
+            style={{width: 100, height: 100}}
+
+            source={
+              {uri: counter.pokemon && counter.pokemon.sprites.front_default
+            }}
+          />
+          
     </ScrollView>
   );
 }
