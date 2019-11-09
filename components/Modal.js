@@ -1,18 +1,34 @@
 import React from 'react'
-import { Overlay } from 'react-native-elements';
+import {Text, Overlay , Badge, ListItem, Button} from 'react-native-elements';
 import {connect} from 'react-redux'
-import {Text} from 'react-native';
+import {View} from 'react-native';
 import {closeOverlay} from '../redux/actions/layout.actions'
+import {styles} from './styles/overlay'
 
 const Modal = ({layoutStore, closeOverlay}) => {
+  const {item} = layoutStore;
 return(
-
+  <View style={styles.overlay}>
     <Overlay
       isVisible={layoutStore.showOverlay}
       onBackdropPress={() => closeOverlay()}
+      height='auto'
     >
-      <Text>Hello from Overlay!</Text>
+   
+    <ListItem 
+      key={item.id} 
+      title={<Text h4>{item.name}</Text>}
+      bottomDivider
+      rightIcon={{raised: true, name: 'check', type:'font-awesome'}}
+    />
+    <Text>{item.description}</Text>
+    <Text>Last time completed: {item.completed_on}</Text>
+    <Text>Number of times completed: {item.times_completed}</Text>
+    <Button title='Complete'/>
+
     </Overlay>
+
+  </View>
 
     )
 

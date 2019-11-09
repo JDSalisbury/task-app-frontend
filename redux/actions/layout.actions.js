@@ -1,5 +1,5 @@
-export const showOverlay = () => dispatch => {
-    dispatch({ type: "SHOW_OVERLAY"});
+export const showOverlay = (data) => dispatch => {
+    dispatch({ type: "SHOW_OVERLAY", data});
 };
 
 export const closeOverlay = () => dispatch => {

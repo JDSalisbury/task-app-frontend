@@ -8,7 +8,6 @@ import Modal from '../components/Modal';
 
 const TasksScreen = ({taskStore, showOverlay}) => { 
 
-  console.log(taskStore.tasks)
   return (
     <ScrollView style={styles.container}>
         <View>
@@ -21,13 +20,13 @@ const TasksScreen = ({taskStore, showOverlay}) => {
 
               bottomDivider
               chevron
-              onPress={()=> showOverlay()}
+              onPress={()=> showOverlay(task)}
               />
             ))
           }
         </View>
-
         <Modal/>
+
        
           
     </ScrollView>
