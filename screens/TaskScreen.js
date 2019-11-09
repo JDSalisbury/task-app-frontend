@@ -1,27 +1,33 @@
-import React,  {useState} from 'react';
+import React, {useEffect} from 'react';
 import { ScrollView, View, Text, Image } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
 import {styles} from './styles/layout'
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
-import {addToCounter, removeFromCounter} from '../redux/actions/counter.actions'
+import { ListItem } from 'react-native-elements'
+import {showOverlay} from '../redux/actions/layout.actions'
+import Modal from '../components/Modal';
 
-const TasksScreen = ({counter, addToCounter, removeFromCounter, }) => { 
+const TasksScreen = ({taskStore, showOverlay}) => { 
 
+  console.log(taskStore.tasks)
   return (
     <ScrollView style={styles.container}>
-      <View style={{flexDirection: 'row', width: 200, justifyContent: 'space-around'}}>
-        <TouchableOpacity onPress={() => {addToCounter()}}>
-          <Text style={{fontSize: 20}}>Increase</Text>
-        </TouchableOpacity>
-        <Text style={{fontSize: 20}}>{counter.counter}</Text>
-        <TouchableOpacity onPress={() =>{removeFromCounter()}}>
-          <Text style={{fontSize: 20}}>Decrease</Text>
-        </TouchableOpacity>
+        <View>
+          {
+            taskStore.tasks.map((task, i) =>(
+              <ListItem
+              key={i}
+              title={task.name}
+              badge={{ value: task.value, textStyle: { color: 'white' } }}
 
-      </View>
-        
+              bottomDivider
+              chevron
+              onPress={()=> showOverlay()}
+              />
+            ))
+          }
+        </View>
+
+        <Modal/>
        
           
     </ScrollView>
@@ -33,6 +39,6 @@ TasksScreen.navigationOptions = {
 };
 
 export default connect(
-  ({counter})=>({counter}),
-  {addToCounter, removeFromCounter}
+  ({taskStore})=>({taskStore}),
+  {showOverlay}
 )(TasksScreen);

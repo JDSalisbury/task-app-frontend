@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import counter from "./counter.reducer";
+import taskStore from "./task.reducer";
+import layoutStore from './layout.reducer';
 
 const rootReducer = combineReducers({
-    counter
+    taskStore,
+    layoutStore
 });
 
 export default rootReducer;

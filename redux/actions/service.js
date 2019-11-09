@@ -38,6 +38,7 @@ export default class Service {
     url = Service.formatUrl(url, queryParams);
     try {
       let data = await fetch(url, {
+        method: "GET",
         headers: config.serviceHeaders
       });
       return this.handleResponse(data);

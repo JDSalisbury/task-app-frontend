@@ -1,5 +1,5 @@
 import * as WebBrowser from 'expo-web-browser';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   Image,
   ScrollView,
@@ -7,12 +7,21 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {connect} from 'react-redux'
+
 
 import {styles} from './styles/layout'
 
 import { MonoText } from '../components/StyledText';
+import {getTasks} from '../redux/actions/task.actions'
 
-const  HomeScreen = () => {
+const  HomeScreen = ({getTasks}) => {
+  
+  useEffect(()=> {
+    getTasks()
+  }, (getTasks))  
+  
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -111,4 +120,7 @@ function handleHelpPress() {
   );
 }
 
-export default HomeScreen;
+export default connect(
+  ({taskStore})=>({taskStore}),
+  {getTasks}
+)(HomeScreen);
